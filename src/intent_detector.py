@@ -7,13 +7,13 @@ def detect_intent(query):
     """
     LLM intent detection:
     """
-    q = query.lower()
+    query = query.lower()
     prompt = f"""
         You are an intent classifier. 
-        Your task is to classify the user query below as 'WEB_SEARCH' or 'NOT_WEB_SEARCH'.
+        Your task is to classify the user query below as 'WEB_SEARCH' if it can only be answered by searching the web, or 'NOT_WEB_SEARCH' otherwise.
         You return only valid JSON:
         {{
-            task: 'WEB_SEARCH' | 'NOT_WEB_SEARCH'
+            "task": "WEB_SEARCH" or "NOT_WEB_SEARCH"
         }}
         
         User query: {query}
@@ -21,4 +21,5 @@ def detect_intent(query):
     
     ans = call_llm(prompt)
     ans = json.loads(ans)
+    print(ans)
     return ans
