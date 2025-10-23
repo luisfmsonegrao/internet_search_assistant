@@ -1,11 +1,13 @@
 import gradio as gr
 import requests
+import os
 
 API_URL = 'https://xemcclumj8.execute-api.us-east-1.amazonaws.com/internet_search_assistant/internet-search-assistant'
+headers = {"api-key": os.getenv("ISA_API_KEY")}
 
 def chat_fn(user_message,history):
     """Route queries and replies"""
-    r = requests.post(API_URL, json={"query": user_message})
+    r = requests.post(API_URL, headers=headers, json={"query": user_message})
     response = r.json().get("answer", "Error")
     answer = response.get("answer")
     history.append((user_message, answer))
