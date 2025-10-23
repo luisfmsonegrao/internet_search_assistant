@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 
 DUCKDUCKGO_HTML = "https://html.duckduckgo.com/html/"
-USER_AGENT = "MySearchAgent/1.0" #(+https://example.com)
+USER_AGENT = "internet-search-assistant"
 MAX_RESULTS = 2
 
 def search_web(query, max_results):
