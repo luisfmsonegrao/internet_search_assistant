@@ -3,7 +3,8 @@ import requests
 import os
 
 API_URL = 'https://xemcclumj8.execute-api.us-east-1.amazonaws.com/internet_search_assistant/internet-search-assistant'
-headers = {"api-key": os.getenv("ISA_API_KEY")}
+api_key = os.environ.get("ISA_API_KEY")
+headers = {"api-key": api_key}
 
 def chat_fn(user_message,history):
     """Route queries and replies"""
