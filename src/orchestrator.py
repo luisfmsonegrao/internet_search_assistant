@@ -5,6 +5,7 @@ from llm_caller import call_llm
 
 def orchestrate(query):
     intent = detect_intent(query)
+    intent = intent.get("task")
     #logger.info("Intent for query '%s' => %s", nquery, intent)
 
     if intent == "NOT_WEB_SEARCH":
