@@ -6,8 +6,8 @@ API_URL = 'https://xemcclumj8.execute-api.us-east-1.amazonaws.com/internet_searc
 def chat_fn(user_message,history):
     """Route queries and replies"""
     r = requests.post(API_URL, json={"query": user_message})
-    summary = r.json().get("answer", "Error")
-    answer = summary.get("answer")
+    response = r.json().get("answer", "Error")
+    answer = response.get("answer")
     history.append((user_message, answer))
     return history,history
 

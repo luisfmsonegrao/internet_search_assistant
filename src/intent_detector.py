@@ -21,5 +21,4 @@ def detect_intent(query):
     
     ans = call_llm(prompt)
     ans = json.loads(ans)
-    print(ans)
     return ans

@@ -12,6 +12,7 @@ def orchestrate(query):
         # Answer purely from LLM (no web)
         prompt = f"Answer concisely: {query}"
         answer = call_llm(prompt)
+        answer = {"answer": answer, "sources": "NONE"}
         response = {"query": query, "source": "LLM_ONLY", "answer": answer}
         return response
 
