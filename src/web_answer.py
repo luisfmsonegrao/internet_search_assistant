@@ -2,12 +2,12 @@ import os
 import json
 from llm_caller import call_llm
 
-def summarize_search_results(query, results):
+def answer_from_web_results(query, results):
     """
-    Build a prompt that instructs the LLM to synthesize search results, point to best sources,
+    Build a prompt that instructs the LLM to answer a user query based on web search results, point to best sources,
     and produce a short answer + bullets + citations.
     """
-    prompt = f"""You are an assistant that synthesizes search results.
+    prompt = f"""You are an assistant that answers a user query based on web search results.
 
 User question: {query}
 

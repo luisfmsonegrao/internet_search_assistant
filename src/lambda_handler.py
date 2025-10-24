@@ -16,7 +16,6 @@ def lambda_handler(event, context):
             return {"statusCode": 400, "body": json.dumps({"error": "query missing"})}
 
         response = orchestrate(query)
-        save_interaction(query,response)
         return {"statusCode": 200, "body": json.dumps(response)}
 
        

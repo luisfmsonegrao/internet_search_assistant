@@ -1,7 +1,9 @@
 from intent_detector import detect_intent
 from web_searcher import search_web, MAX_RESULTS
-from search_summarizer import summarize_search_results
+from web_answer import answer_from_web_results
 from llm_caller import call_llm
+from interaction_saver import save_interaction
+
 
 def orchestrate(query):
     intent = detect_intent(query)
@@ -26,5 +28,9 @@ def orchestrate(query):
         return response
 
     # Summarize with LLM
-    summary = summarize_search_results(query, results)
+    summary = answer_from_web_results(query, results)
+    response = summary["answer"]
+    sources = summary["sources"]
+    save_interaction(query,response,sources)
+
     return {"query": query, "source": "WEB_SUMMARY", "answer": summary}
