@@ -10,7 +10,7 @@ bedrock = boto3.client("bedrock-runtime")
 embedding_model = "amazon.titan-embed-text-v2:0"
 ttl_threshold = 7200 #seconds
 
-def save_interaction(query, results):
+def save_interaction(query, results,sources):
     embedding = embed_query(query)
     embedding = [Decimal(str(x)) for x in embedding]
     table.put_item(Item={
@@ -19,6 +19,7 @@ def save_interaction(query, results):
         "query_text": query,
         "embedding": embedding,
         "results": json.dumps(results),
+        "sources": json.dumps(sources),
         "ttl": int(time.time()) + ttl_threshold
     })
 
