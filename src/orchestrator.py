@@ -1,11 +1,13 @@
 from intent_detector import detect_intent
 from web_searcher import search_web, MAX_RESULTS
-from web_answer import answer_from_web_results
+from context_answer import answer_from_context
 from llm_caller import call_llm
 from interaction_saver import save_interaction
+from doc_ingester import upload_to_knowledge_base
 
 
 def orchestrate(query):
+    """Agen orchestration logic"""
     intent = detect_intent(query)
     intent = intent.get("task")
     #logger.info("Intent for query '%s' => %s", nquery, intent)
@@ -20,6 +22,8 @@ def orchestrate(query):
 
     # Run DuckDuckGo search
     results = search_web(query, MAX_RESULTS)
+    for doc in results:
+       upload_to_knowledge_base(doc)
 
     if not results:
         # No results from DDG
@@ -28,7 +32,7 @@ def orchestrate(query):
         return response
 
     # Summarize with LLM
-    summary = answer_from_web_results(query, results)
+    summary = answer_from_context(query)
     response = summary["answer"]
     sources = summary["sources"]
     save_interaction(query,response,sources)

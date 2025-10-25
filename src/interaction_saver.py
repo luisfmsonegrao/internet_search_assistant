@@ -11,6 +11,7 @@ embedding_model = "amazon.titan-embed-text-v2:0"
 ttl_threshold = 7200 #seconds
 
 def save_interaction(query, results,sources):
+    """Save interaction to DynamoDB"""
     embedding = embed_query(query)
     embedding = [Decimal(str(x)) for x in embedding]
     table.put_item(Item={
