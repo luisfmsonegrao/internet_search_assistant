@@ -9,7 +9,7 @@ def orchestrate(query):
     intent = detect_intent(query)
     intent = intent.get("task")
     #logger.info("Intent for query '%s' => %s", nquery, intent)
-
+    print(f"INTENT: {intent}")
     if intent == "NOT_WEB_SEARCH":
         # Answer purely from LLM (no web)
         prompt = f"Answer concisely: {query}"
@@ -33,4 +33,4 @@ def orchestrate(query):
     sources = summary["sources"]
     save_interaction(query,response,sources)
 
-    return {"query": query, "source": "WEB_SUMMARY", "answer": summary}
+    return {"query": query, "source": "WEB_ANSWER", "answer": summary}
