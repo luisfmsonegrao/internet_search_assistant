@@ -1,6 +1,7 @@
 import os
 
 def lambda_handler(event, context):
+    """AWS Lambda authenticator"""
     api_key = os.environ.get("AUTH_API_KEY")
     token = event["headers"].get("api-key")
     if token == api_key:

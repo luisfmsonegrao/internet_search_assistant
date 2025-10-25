@@ -4,9 +4,7 @@ from llm_caller import call_llm
 
 
 def detect_intent(query):
-    """
-    LLM intent detection:
-    """
+    """ Detect intention of the user query. """
     query = query.lower()
     prompt = f"""
         You are an intent classifier. 

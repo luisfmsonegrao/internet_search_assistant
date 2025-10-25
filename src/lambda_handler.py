@@ -6,9 +6,7 @@ import json
 MAX_RESULTS = 2
 
 def lambda_handler(event, context):
-    """
-    Expects JSON body: {"query": "tell me about X"}
-    """
+    """AWS Lambda endpoint to answer user queries"""
     try:
         body = json.loads(event.get("body","{}"))
         query = body.get("query", "").strip()

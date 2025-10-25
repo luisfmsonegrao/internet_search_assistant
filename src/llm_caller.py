@@ -12,7 +12,7 @@ def call_llm(query):
         "messages": [
             {"role": "user", "content": query}
         ],
-        "max_tokens": 4000,
+        "max_tokens": 10000,
         "temperature": 0.0,
         "top_p": 1.0
     })
