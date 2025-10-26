@@ -9,8 +9,8 @@ def lambda_handler(event, context):
 
     response = state_table.query(
         KeyConditionExpression=boto3.dynamodb.conditions.Key('session_id').eq(session_id),
-        ScanIndexForward=False,  # ⬅️ descending order (newest first)
-        Limit=1                  # ⬅️ only the latest item
+        ScanIndexForward=False,
+        Limit=1 
     )
 
     if not response['Items']:
