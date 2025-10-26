@@ -23,7 +23,7 @@ def orchestrate(query):
     # Run DuckDuckGo search
     results = search_web(query, MAX_RESULTS)
     for doc in results:
-       upload_to_knowledge_base(doc)
+        upload_to_knowledge_base(doc)
 
     if not results:
         # No results from DDG
@@ -32,9 +32,9 @@ def orchestrate(query):
         return response
 
     # Summarize with LLM
-    summary = answer_from_context(query)
-    response = summary["answer"]
-    sources = summary["sources"]
+    answer = answer_from_context(query)
+    response = answer["answer"]
+    sources = answer["sources"]
     save_interaction(query,response,sources)
 
-    return {"query": query, "source": "WEB_ANSWER", "answer": summary}
+    return {"query": query, "source": "WEB_ANSWER", "answer": answer}

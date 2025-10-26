@@ -39,14 +39,15 @@ def upload_to_knowledge_base(document):
     chunk_documents = make_documents(chunks,title,url)
     for doc_idx in range(0,len(chunk_documents),BATCH_SIZE):
         batch = chunk_documents[doc_idx:doc_idx+BATCH_SIZE-1]
-        #batch = remove_present(batch) remove docs that are already present from batch
-        resp = kb_client.ingest_knowledge_base_documents(
+        batch = remove_present(batch)
+        if batch:
+            resp = kb_client.ingest_knowledge_base_documents(
             knowledgeBaseId=KNOWLEDGE_BASE_ID,
             dataSourceId=DATA_SOURCE_ID,
             documents=batch
-        )
-        wait_for_completion(batch)
-        print(f"DOCS: {doc_idx}-{doc_idx+BATCH_SIZE}\n")
+            )
+            wait_for_completion(batch)
+            print(f"DOCS: {doc_idx}-{doc_idx+BATCH_SIZE}\n")
     
 def make_documents(chunks,title, url):
     """Format chunks for bedorck knowledge base"""
@@ -121,5 +122,6 @@ def remove_present(batch): #to be completed
         dataSourceId=DATA_SOURCE_ID,
         documentIdentifiers=doc_ids
     )
-    already_present = [doc["status"] for doc in st["documentDetails"]]
-    return 
+    already_present = [i for (i,doc) in enumerate(st["documentDetails"]) if doc["status"] not in ["NOT_FOUND","FAILED","PARTIALLY_INDEXED"]]
+    filtered_batch = [b for (i,b) in enumerate(batch) if i not in already_present]
+    return filtered_batch
