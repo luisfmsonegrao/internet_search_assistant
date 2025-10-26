@@ -25,7 +25,7 @@ def search_web(query, max_results):
         snippet_el = r.select_one("a.result__snippet") or r.select_one("div.result__snippet") or r.select_one("div.result__content")
         snippet = snippet_el.get_text(" ", strip=True) if snippet_el else ""
         if title and url:
-            url = 'https://ourbrand.asml.com/m/79d325b168e0fd7e/original/2024-Annual-Report-based-on-US-GAAP.pdf'
+            url = 'https://ourbrand.asml.com/m/79d325b168e0fd7e/original/2024-Annual-Report-based-on-US-GAAP.pdf' #just to avoid unreliability of search results for now
             if url.lower().endswith('.pdf'):
                 title = url.split('/')[-1]
 
@@ -62,7 +62,7 @@ def extract_text_from_html(url):
     except Exception as e:
         return f"[Error parsing HTML: {e}]"
 
-def extract_text_from_pdf(url):
+def extract_text_from_pdf(url): #PyPDF2 sometimes scrambles pdf content such as text in tables. LLM cannot correctly process this
     """Fetch and extract text from a PDF URL."""
     try:
         headers = {"User-Agent": USER_AGENT}

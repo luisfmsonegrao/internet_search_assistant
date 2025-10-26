@@ -18,7 +18,7 @@ def get_embedding_titan(text):
     result = json.loads(response["body"].read())
     return result["embedding"]
 
-def chunk_text(text, prefix, chunk_size=600, overlap=20):
+def chunk_text(text, prefix, chunk_size=600, overlap=20): #need to optimize prefix to disambiguate similar queries that refer to different entities/dates/etc. Maybe also add keywords...
     """Split text into chunks. Use prefix to try to make chunks unambiguous"""
     chunks = []
     start = 0
