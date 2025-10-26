@@ -1,18 +1,16 @@
 from orchestrator import orchestrate
 import json
 
-
-MAX_RESULTS = 2
-
 def lambda_handler(event, context):
     """AWS Lambda endpoint to answer user queries"""
     try:
         body = json.loads(event.get("body","{}"))
         query = body.get("query", "").strip()
+        session_id = body.get("session_id","").strip()
         if not query:
             return {"statusCode": 400, "body": json.dumps({"error": "query missing"})}
 
-        response = orchestrate(query)
+        response = orchestrate(query,session_id)
         return {"statusCode": 200, "body": json.dumps(response)}
 
        

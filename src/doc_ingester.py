@@ -86,7 +86,7 @@ def make_documents(chunks,title, url):
 
     return documents
 
-def wait_for_completion(batch):
+def wait_for_completion(batch): # check if it's possible that this can get stuck, e.g. there are states not considered such as "FAILED"
     """Waits until all provided document are completely ingested by knowledge base."""
     uris = [c["content"]["custom"]["customDocumentIdentifier"]["id"] for c in batch]
     remaining = set(uris)

@@ -5,7 +5,6 @@ from PyPDF2 import PdfReader
 
 DUCKDUCKGO_HTML = "https://html.duckduckgo.com/html/"
 USER_AGENT = "internet-search-assistant"
-MAX_RESULTS = 1
 
 def search_web(query, max_results):
     """
