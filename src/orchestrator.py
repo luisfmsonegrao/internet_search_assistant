@@ -18,7 +18,7 @@ def orchestrate(query,session_id):
     """Agent orchestration logic"""
     update_state(session_id,"LOADING INTERACTION HISTORY")
     history = load_interactions(HISTORY_SIZE)#ToDo: recency-based context seems unreliable. change to relevance-based context
-    update_state(session_id, "CALSSIFYING TASK TYPE")
+    update_state(session_id, "CLASSIFYING TASK TYPE")
     task = classify_task(query,history)
     task_class = task.get("task")
     if task_class == "NO_SEARCH": 
