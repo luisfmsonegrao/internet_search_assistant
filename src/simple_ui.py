@@ -11,13 +11,11 @@ session_id = "1234" #session id should be created inside agent application, not 
 def call_assistant(user_message):
     r = requests.post(AGENT_API_URL, headers=headers, json={"query": user_message, "session_id": session_id})
     response = r.json().get("answer", "Error")
-    print(response)
     answer = response.get("answer")
     return answer
 
 def check_assistant_state():
     r = requests.post(STATE_API_URL, headers=headers, json={"session_id": session_id})
-    print(r)
-    body = r.json().get("body", "Error")
-    return body
+    answer = r.json().get("state", "Error")
+    return answer
 
