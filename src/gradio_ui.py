@@ -1,7 +1,7 @@
 import gradio as gr
 import requests
 import os
-from simple_ui import check_assistant_state, call_assistant
+from assistant_api import check_assistant_state, call_assistant
 from orchestrator import orchestrate
 
 AGENT_API_URL = 'https://xemcclumj8.execute-api.us-east-1.amazonaws.com/internet_search_assistant/internet-search-assistant'
