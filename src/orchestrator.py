@@ -21,7 +21,6 @@ def orchestrate(query,session_id):
     update_state(session_id, "CALSSIFYING TASK TYPE")
     task = classify_task(query,history)
     task_class = task.get("task")
-    print(f"Task: {task_class}")
     if task_class == "NO_SEARCH": 
         prompt = f"Answer concisely: {query}"
         update_state(session_id,"ANSWERING QUESTION FROM LLM KNOWLEDGE")

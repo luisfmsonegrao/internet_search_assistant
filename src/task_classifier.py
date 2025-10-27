@@ -25,7 +25,6 @@ def classify_task(query,history):
     for (i,h) in enumerate(history):
         prompt += f"\n {i}: {h["query_text"]}"
 
-    print(prompt)
     ans = call_llm(prompt)
     ans = json.loads(ans)
     return ans

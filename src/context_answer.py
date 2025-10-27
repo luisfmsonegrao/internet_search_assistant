@@ -14,7 +14,6 @@ def answer_from_context(query,context):
     Context:
     """
     for i, c in enumerate(context, start=1):
-        print(f"CONTEXT: {c}")
         text = c['text']
         uri = c['metadata'][source_uri_string]
         prompt += "[{}]: {} (source: {})\n".format(i,text,uri)
