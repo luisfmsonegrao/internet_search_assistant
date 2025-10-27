@@ -13,8 +13,7 @@ session_id = "1234"
 
 def chat_fn(user_message,history):
     """Route queries and replies"""
-    answer = orchestrate(user_message, session_id)
-    answer = answer.get("answer")
+    answer = call_assistant(user_message)
     history.append((user_message, answer))
     return history,history
 
