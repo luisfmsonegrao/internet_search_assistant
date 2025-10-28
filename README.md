@@ -14,7 +14,6 @@ The Web Search Assistant is an AI agent that answers user queries by retrieving 
 ## Repository contents
 
   - `\src` contains the Search Assistant source code.
-  - `\scripts` contains scripts used e.g. to train the predictive model, clean and upload data, etc.
   - `\notebooks` contains jupyter notebooks used for testing the assistant's functionalities.
   - `\resources` contains various resources such as figures or custom AWS Lambda Layers.
 
