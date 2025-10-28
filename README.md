@@ -44,7 +44,7 @@ The Search Assistant is an AI agent that answers user queries by retrieving rele
 ## Tech Stack
 
   - the search assistant is implemented as an `AWS Lambda` function accessible through an `AWS API Gateway`
-  - calls to the `API Gateway`` are first routed to a `Lambda Authorizer` function that validates a secret API key stored in `AWS Secrets Manager`
+  - calls to the `API Gateway` are first routed to a `Lambda Authorizer` function that validates a secret API key stored in `AWS Secrets Manager`
   - the assistant is implemented in `Python 3.12`
   - past user interactions are stored in a `DynamoDB` database
   - the assistant state is logged to a `DynamoDB` database
