@@ -71,6 +71,6 @@ A GUI is implemented in `src\gradio_ui.py` to facilitate user interaction with t
 
 ## Deployment Strategy
 
-Many architectural aspects of the Web Search Asistant are already defined (see [Search Assistant current architecture](#Search-Assistant-current-architecture).
+Many architectural aspects of the Web Search Asistant are already defined (see [Search Assistant current architecture](#Search-Assistant-current-architecture) . However, certain elements can be improved or are still missing altogether.
 
 
