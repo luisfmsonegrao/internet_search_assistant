@@ -39,6 +39,7 @@ The Search Assistant is an AI agent that answers user queries by retrieving rele
   - Finally:
     - the assistant saves the new interaction to memory
     - the assistant returns the answer
+  - A GUI is provided to facilitate the interaction of users with the assistant. The GUI also allows users to provide feedback per answer through "thumps-up" and "thumbs-down" buttons, although this feedback is not yet stored or processed.
   
   **Note**: In every step, the assistant logs its current state to a database that can be queried by the user to check the assistant's current state.
 
