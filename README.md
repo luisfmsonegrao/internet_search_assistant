@@ -7,8 +7,8 @@ The Web Search Assistant is an AI agent that answers user queries by retrieving 
   - [Repository Contents](#Repository-contents)
   - [Search Assistant current architecture](#Search-Assistant-current-architecture)
   - [Detailed Search Assistant description](#detailed-Search-Assistant-description)
-  - [Tech-stack summary](#Tech-stack-summary)
-  - [Using Search Assistant](#Using-Search-Assistant)
+  - [Tech-stack](#Tech-stack)
+  - [Search Assistant API](#Search-Assistant-API)
   - [Deployment Strategy](#Deployment-Strategy)
 
 ## Repository contents
@@ -39,5 +39,17 @@ The Search Assistant is an AI agent that answers user queries by retrieving rele
   - Finally:
     - the assistant saves the new interaction to memory
     - the assistant returns the answer
+  **Note**: In every step, the assistant logs its current state to a database that can be queried by the user to check the assistant's current state.
+   
+## Tech Stack
+
+  - the search assistant is implemented as an `AWS Lambda` function accessible through an `AWS API Gateway`
+  - calls to the `API Gateway`` are first routed to a `Lambda Authorizer` function that validates a secret API key stored in `AWS Secrets Manager`
+  - the assistant is implemented in `Python 3.12`
+  - past user interactions are stored in a `DynamoDB` database
+  - the assistant state is logged to a `DynamoDB` database
+  - documents retrieved from the web are ingested into an `Amazon Knowledge Base` vector database
+  - web searches are done with the `DuckDuckGo` browser
+  - `claude sonnet 3` is used for query classification and answering
 
 
