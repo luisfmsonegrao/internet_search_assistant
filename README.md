@@ -27,7 +27,7 @@ The Search Assistant is an AI agent that answers user queries by retrieving rele
   - Based on the query and the past interactions, the assistant uses an LLM to decide whether web search, knowledge base search or no search are required to answer the query.
   - If web search is needed:
     - the LLM converts the query to a web query
-    - the assistant uses `DuckDuckGo`to search the web for relevant information
+    - the assistant uses `DuckDuckGo` to search the web for relevant information
     - retrieved PDF and HTML are parsed, chunked and ingested into a vector database
     - the query is augmented with the most-relevant L entries from the vector database
     - the LLM answers the query from the retrieved context information
@@ -75,6 +75,10 @@ Many architectural aspects of the Web Search Asistant are already defined (see [
 
   - Deployment of updates to the Search Assistant needs to be automated. A deployment pipeline can be implemented for instance with `GitHub Actions` or `AWS CodePipeline`.
   - Scalability: The assistant currently runs as an AWS Lambda function, so it can scale to potentially thousands of concurrent requests and can be used worldwide. However, AWS API Gateways are hardcoded to time out after 30 seconds, meaning the current architecture is not suitable for difficult time-consuming requests. To circumvent this, the assistant should be migrated to AWS Step Functions or deployed as a containerized application (using `docker`) to a `kubernetes` cluster.
+  - Reliability:
+    - performance metrics must be tracked. This includes latency, user feedback, response quality, error codes, etc. `AWS Cloudwatch` can be used for this purpose.
+    - Updates should be deployed through canary releases to derisk deployment.  `AWS CodeDeploy` can be used for trafic splitting management, and `CloudWatch` metrics can be used to trigger rollbacks.
+  - Security: the current solution - distributing an API key to users - is not practical nor safe once the number of users starts growing. Since this is meant to be an application for internal use by a limited number of users, identity and access management should be enforced using `AWS IAM authentication`.
 
 
 
