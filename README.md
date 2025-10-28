@@ -51,5 +51,6 @@ The Search Assistant is an AI agent that answers user queries by retrieving rele
   - documents retrieved from the web are ingested into an `Amazon Knowledge Base` vector database
   - web searches are done with the `DuckDuckGo` browser
   - `claude sonnet 3` is used for query classification and answering
+  - the user can interact with the assistant through a `Gradio` GUI
 
 
