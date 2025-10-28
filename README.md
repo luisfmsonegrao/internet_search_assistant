@@ -64,6 +64,6 @@ The Search Assistant API is composed of two functions, defined in `src\assistant
 - `call_assistant` queries the assistant
 - `check_assistant_state` retrieves the current state of the assistant
 
-A GUI is implemented in `src\gradio_ui.py` to facilitate user interaction with the assistant. It can be launched by executing the script from the command line (`python <path_to_scrip>\gradio_ui.py`)
+A GUI is implemented in `src\gradio_ui.py` to facilitate user interaction with the assistant. It can be launched by executing the script from the command line (`python <path_to_script>\gradio_ui.py`)
 
 
