@@ -69,4 +69,8 @@ A GUI is implemented in `src\gradio_ui.py` to facilitate user interaction with t
 
 **Note**: The only necessary step prior to interacting with the assistant is obtaining the secret API Key and storting it as a local environment variable called "ISA_API_KEY".
 
+## Deployment Strategy
+
+Many architectural aspects of the Web Search Asistant are already defined (see [Search Assistant current architecture](#Search-Assistant-current-architecture).
+
 
