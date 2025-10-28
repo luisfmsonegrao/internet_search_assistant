@@ -53,4 +53,10 @@ The Search Assistant is an AI agent that answers user queries by retrieving rele
   - `claude sonnet 3` is used for query classification and answering
   - the user can interact with the assistant through a `Gradio` GUI
 
+## Search Assistant API
+
+The Search Assistant API is composed of two functions, defined in `src\assistant_api.py`:
+- `call_assistant` queries the assistant
+- `check_assistant_state` retrieves the current state of the assistant
+
 
