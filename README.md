@@ -74,7 +74,7 @@ A GUI is implemented in `src\gradio_ui.py` to facilitate user interaction with t
 Many architectural aspects of the Web Search Asistant are already defined (see [Search Assistant current architecture](#Search-Assistant-current-architecture)). However, the current architecture has certain limitations or gaps, which are addressed here.
 
   - Deployment of updates to the Search Assistant needs to be automated. A deployment pipeline can be implemented for instance with `GitHub Actions` or `AWS CodePipeline`.
-  - Scalability: The assistant currently runs as an AWS Lambda function, so it can scale to potentially thousands of concurrent requests and can be used worldwide. However, AWS API Gateways are hardcoded to time out after 30 seconds, meaning the current architecture is not suitable for difficult time-consuming requests. To circumvent this, the assistant could be migrated to AWS Step Functions or deployed as a containerized application (using `docker`) to a `kubernetes` cluster.
+  - Scalability: The assistant currently runs as an AWS Lambda function, so it can scale to potentially thousands of concurrent requests and can be used worldwide. However, AWS API Gateways are hardcoded to time out after 30 seconds, meaning the current architecture is not suitable for difficult time-consuming requests. To circumvent this, the assistant should be migrated to AWS Step Functions or deployed as a containerized application (using `docker`) to a `kubernetes` cluster.
 
 
 
