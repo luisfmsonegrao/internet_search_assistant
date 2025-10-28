@@ -77,7 +77,7 @@ Many architectural aspects of the Web Search Asistant are already defined (see [
   - Scalability: The assistant currently runs as an AWS Lambda function, so it can scale to potentially thousands of concurrent requests and can be used worldwide. However, AWS API Gateways are hardcoded to time out after 30 seconds, meaning the current architecture is not suitable for difficult time-consuming requests. To circumvent this, the assistant should be migrated to AWS Step Functions or deployed as a containerized application (using `docker`) to a `kubernetes` cluster.
   - Reliability:
     - performance metrics must be tracked. This includes latency, user feedback, response quality, error codes, etc. `AWS Cloudwatch` can be used for this purpose.
-    - Updates should be deployed through canary releases to derisk deployment.  `AWS CodeDeploy` can be used for trafic splitting management, and `CloudWatch` metrics can be used to trigger rollbacks.
+    - Updates should be deployed through canary releases to derisk deployment.  `AWS CodeDeploy` can be used for trafic splitting management during rollout, and `CloudWatch` metrics can be used to trigger rollbacks.
   - Security: the current solution - distributing an API key to users - is not practical nor safe once the number of users starts growing. Since this is meant to be an application for internal use by a limited number of users, identity and access management should be enforced using `AWS IAM authentication`.
 
 
