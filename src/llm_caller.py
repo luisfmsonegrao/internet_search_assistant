@@ -1,8 +1,8 @@
 import boto3
 import json
+from config import AWS_REGION, BEDROCK_LLM_ID
 
-BEDROCK_MODEL_ID = 'anthropic.claude-3-sonnet-20240229-v1:0'
-bedrock = boto3.client('bedrock-runtime', region_name='us-east-1')
+bedrock = boto3.client('bedrock-runtime', region_name=AWS_REGION)
 
 def call_llm(query):
     """Query foundation LLM"""
@@ -17,7 +17,7 @@ def call_llm(query):
         "top_p": 1.0
     })
     output = bedrock.invoke_model(
-        modelId=BEDROCK_MODEL_ID,
+        modelId=BEDROCK_LLM_ID,
         body=body,
         contentType="application/json",
         accept="application/json"
