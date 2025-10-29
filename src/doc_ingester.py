@@ -9,15 +9,6 @@ KNOWLEDGE_BASE_ID = "JBUFV7WP0E"
 DATA_SOURCE_ID = "OSEESE71TJ"
 BATCH_SIZE=25
 
-def get_embedding_titan(text):
-    """Convert text to vector embeddings"""
-    response = bedrock.invoke_model(
-        modelId=embedding_model_id,
-        body=json.dumps({"inputText": text})
-    )
-    result = json.loads(response["body"].read())
-    return result["embedding"]
-
 def chunk_text(text, prefix, chunk_size=600, overlap=20): #need to optimize prefix to disambiguate similar queries that refer to different entities/dates/etc. Maybe also add keywords...
     """Split text into chunks. Use prefix to try to make chunks unambiguous"""
     chunks = []
