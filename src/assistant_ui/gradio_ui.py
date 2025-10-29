@@ -1,11 +1,13 @@
 import gradio as gr
 from ..assistant_api.assistant_api import check_assistant_state, call_assistant
 
-def chat_fn(user_message,history):
+
+def chat_fn(user_message, history):
     """Route queries and replies"""
     answer = call_assistant(user_message)
     history.append((user_message, answer))
-    return history,history
+    return history, history
+
 
 with gr.Blocks() as demo:
     """Define Gradio App"""
