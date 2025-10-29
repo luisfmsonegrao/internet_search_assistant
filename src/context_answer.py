@@ -1,6 +1,5 @@
 from llm_caller import call_llm
-
-source_uri_string = 'x-amz-bedrock-kb-source-uri'
+from config import KNOWLEDGEBASE_SOURCE_URI_STRING
 
 def answer_from_context(query,context):
     """
@@ -15,7 +14,7 @@ def answer_from_context(query,context):
     """
     for i, c in enumerate(context, start=1):
         text = c['text']
-        uri = c['metadata'][source_uri_string]
+        uri = c['metadata'][KNOWLEDGEBASE_SOURCE_URI_STRING]
         prompt += "[{}]: {} (source: {})\n".format(i,text,uri)
 
     prompt += """

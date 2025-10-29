@@ -2,8 +2,8 @@ import requests
 from bs4 import BeautifulSoup
 from io import BytesIO
 from PyPDF2 import PdfReader
+from config import WEBSEARCH_ENDPOINT
 
-DUCKDUCKGO_HTML = "https://html.duckduckgo.com/html/"
 USER_AGENT = "internet-search-assistant"
 
 def search_web(query, max_results):
@@ -12,7 +12,7 @@ def search_web(query, max_results):
     """
     headers = {"User-Agent": USER_AGENT}
     # Use the HTML endpoint which is easier to parse in scripts
-    resp = requests.post(DUCKDUCKGO_HTML, data={"q": query}, headers=headers, timeout=10)
+    resp = requests.post(WEBSEARCH_ENDPOINT, data={"q": query}, headers=headers, timeout=10)
     resp.raise_for_status()
     soup = BeautifulSoup(resp.text, "html.parser")
     results = []

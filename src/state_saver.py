@@ -1,9 +1,9 @@
 import boto3
 import time
+from config import STATE_DB_TTL
 
 dynamodb = boto3.resource("dynamodb")
 state_table = dynamodb.Table("internet-search-agent-state")
-ttl_time = 7200
 
 def update_state(session_id,state):
     init_time = int(time.time())
@@ -12,6 +12,6 @@ def update_state(session_id,state):
         'session_id': session_id,
         'state': state,
         'timestamp': init_time,
-        'ttl': init_time+ttl_time
+        'ttl': init_time+STATE_DB_TTL
         }
     )

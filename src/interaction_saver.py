@@ -3,12 +3,12 @@ import uuid
 import time
 import json
 from decimal import Decimal
+from config import TEXT_EMBEDDING_MODEL_ID
+from config import INTERACTION_DB_TTL
 
 dynamodb = boto3.resource("dynamodb")
 interaction_cache = dynamodb.Table("internet-search-agent-cache")
 bedrock = boto3.client("bedrock-runtime")
-embedding_model = "amazon.titan-embed-text-v2:0"
-ttl_threshold = 7200 #seconds
 
 def save_interaction(query, results,context):
     """Save interaction to DynamoDB"""
@@ -22,12 +22,12 @@ def save_interaction(query, results,context):
         "embedding": embedding,
         "results": json.dumps(results),
         "context": json.dumps(context),
-        "ttl": init_time + ttl_threshold
+        "ttl": init_time + INTERACTION_DB_TTL
     })
 
 def embed_query(query):
     response = bedrock.invoke_model(
-        modelId=embedding_model,
+        modelId=TEXT_EMBEDDING_MODEL_ID,
         body=json.dumps({"inputText": query})
     )
     response = json.loads(response["body"].read())["embedding"]

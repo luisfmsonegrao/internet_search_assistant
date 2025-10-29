@@ -1,13 +1,10 @@
 import boto3
-import json
 import time
+from config import KNOWLEDGEBASE_ID, DATA_SOURCE_ID, AWS_REGION 
 
 kb_client = boto3.client('bedrock-agent')
-bedrock = boto3.client(service_name="bedrock-runtime", region_name="us-east-1")
-embedding_model_id = "amazon.titan-embed-text-v2:0"
-KNOWLEDGE_BASE_ID = "JBUFV7WP0E"
-DATA_SOURCE_ID = "OSEESE71TJ"
-BATCH_SIZE=25
+bedrock = boto3.client(service_name="bedrock-runtime", region_name=AWS_REGION)
+INGESTION_BATCH_SIZE=25
 
 def chunk_text(text, prefix, chunk_size=600, overlap=20): #need to optimize prefix to disambiguate similar queries that refer to different entities/dates/etc. Maybe also add keywords...
     """Split text into chunks. Use prefix to try to make chunks unambiguous"""
@@ -28,17 +25,17 @@ def upload_to_knowledge_base(document):
     url = document.get("url")
     chunks = chunk_text(content,title)
     chunk_documents = make_documents(chunks,title,url)
-    for doc_idx in range(0,len(chunk_documents),BATCH_SIZE):
-        batch = chunk_documents[doc_idx:doc_idx+BATCH_SIZE-1]
+    for doc_idx in range(0,len(chunk_documents),INGESTION_BATCH_SIZE):
+        batch = chunk_documents[doc_idx:doc_idx+INGESTION_BATCH_SIZE-1]
         batch = remove_present(batch)
         if batch:
             resp = kb_client.ingest_knowledge_base_documents(
-            knowledgeBaseId=KNOWLEDGE_BASE_ID,
+            knowledgeBaseId=KNOWLEDGEBASE_ID,
             dataSourceId=DATA_SOURCE_ID,
             documents=batch
             )
             wait_for_completion(batch)
-            print(f"DOCS: {doc_idx}-{doc_idx+BATCH_SIZE}\n")
+            print(f"DOCS: {doc_idx}-{doc_idx+INGESTION_BATCH_SIZE}\n")
     
 def make_documents(chunks,title, url):
     """Format chunks for bedorck knowledge base"""
@@ -85,7 +82,7 @@ def wait_for_completion(batch): # check if it's possible that this can get stuck
         doc_ids = [{'dataSourceType': 'CUSTOM', 'custom': {'id': r}} for r in remaining]
 
         resp = kb_client.get_knowledge_base_documents(
-            knowledgeBaseId=KNOWLEDGE_BASE_ID,
+            knowledgeBaseId=KNOWLEDGEBASE_ID,
             dataSourceId=DATA_SOURCE_ID,
             documentIdentifiers=doc_ids
         )
@@ -109,7 +106,7 @@ def remove_present(batch): #to be completed
     uris = [c["content"]["custom"]["customDocumentIdentifier"]["id"] for c in batch]
     doc_ids = format_uris(uris)
     st = kb_client.get_knowledge_base_documents(
-        knowledgeBaseId=KNOWLEDGE_BASE_ID,
+        knowledgeBaseId=KNOWLEDGEBASE_ID,
         dataSourceId=DATA_SOURCE_ID,
         documentIdentifiers=doc_ids
     )

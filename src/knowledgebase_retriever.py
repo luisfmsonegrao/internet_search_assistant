@@ -1,9 +1,8 @@
 import boto3
 from doc_ingester import KNOWLEDGE_BASE_ID
+from config import AWS_REGION
 
-REGION = "us-east-1"
-
-bedrock_agent = boto3.client('bedrock-agent-runtime',region_name=REGION)
+bedrock_agent = boto3.client('bedrock-agent-runtime',region_name=AWS_REGION)
 
 def retrieve_kb_context(query,top_k=5):
     """Retrieve relevant context from Amazon Bedrock Knowledge database"""

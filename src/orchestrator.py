@@ -7,17 +7,13 @@ from interaction_loader import load_interactions
 from doc_ingester import upload_to_knowledge_base
 from knowledgebase_retriever import retrieve_kb_context
 from state_saver import update_state
-
-source_uri_string = 'x-amz-bedrock-kb-source-uri'
-HISTORY_SIZE = 3
-CONTEXT_SIZE = 3
-MAX_SEARCH_HITS = 1
+from config import HISTORY_CONTEXT_SIZE, RELEVANCE_CONTEXT_SIZE, MAX_SEARCH_HITS
 
 
 def orchestrate(query,session_id):
     """Agent orchestration logic"""
     update_state(session_id,"LOADING INTERACTION HISTORY")
-    history = load_interactions(HISTORY_SIZE)#ToDo: recency-based context seems unreliable. change to relevance-based context
+    history = load_interactions(HISTORY_CONTEXT_SIZE)#ToDo: recency-based context seems unreliable. change to relevance-based context
     update_state(session_id, "CLASSIFYING TASK TYPE")
     task = classify_task(query,history)
     task_class = task.get("task")
@@ -30,7 +26,7 @@ def orchestrate(query,session_id):
 
     if task_class == "CONTEXT_SEARCH": #Try to answer from conversation context
         update_state(session_id,"RETRIEVING CONTEXT INFORMATION RELEVANT FOR QUESTION")
-        context = retrieve_kb_context(query,CONTEXT_SIZE)
+        context = retrieve_kb_context(query,RELEVANCE_CONTEXT_SIZE)
         update_state(session_id,"ANSWERING QUESTION FROM RELEVANT KNOWLEDGE BASE CONTEXT")
         answer = answer_from_context(query,context) # Add a fallback to WEB_SEARCH if answer cannot be found from context
 
@@ -47,7 +43,7 @@ def orchestrate(query,session_id):
             return response
         
         update_state(session_id,"RETRIEVING CONTEXT INFORMATION RELEVANT FOR QUESTION")
-        context = retrieve_kb_context(query,CONTEXT_SIZE)
+        context = retrieve_kb_context(query,RELEVANCE_CONTEXT_SIZE)
         update_state(session_id,"ANSWERING QUESTION BASED ON CONTEXT INFORMATION RETRIEVED FROM WEB")
         answer = answer_from_context(query,context)
     

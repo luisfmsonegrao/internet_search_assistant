@@ -1,11 +1,10 @@
 import requests
 import os
+from config import AGENT_API_URL
+from config import STATE_API_URL
+from config import API_KEY
 
-AGENT_API_URL = 'https://xemcclumj8.execute-api.us-east-1.amazonaws.com/internet_search_assistant/internet-search-assistant'
-STATE_API_URL = 'https://2e8gd55dkh.execute-api.us-east-1.amazonaws.com/state/state'
-api_key = os.environ.get("ISA_API_KEY")
-headers = {"api-key": api_key}
-
+headers = {"api-key": API_KEY}
 session_id = "1234" #session id should be created inside agent application, not here.
 
 def call_assistant(user_message):

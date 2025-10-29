@@ -10,7 +10,7 @@ def lambda_handler(event, context):
         if not query:
             return {"statusCode": 400, "body": json.dumps({"error": "query missing"})}
 
-        response = orchestrate(query,session_id)
+        response = orchestrate(query,session_id) # Run Search Assistant
         return {"statusCode": 200, "body": json.dumps(response)}
 
        
