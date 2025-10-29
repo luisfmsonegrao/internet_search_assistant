@@ -1,7 +1,8 @@
 from llm_caller import call_llm
 from ..config import KNOWLEDGEBASE_SOURCE_URI_STRING
 
-def answer_from_context(query,context):
+
+def answer_from_context(query, context):
     """
     Build a prompt that instructs the LLM to answer a user query based on provided context, point to best sources,
     and produce a short answer + bullets + citations.
@@ -13,9 +14,9 @@ def answer_from_context(query,context):
     Context:
     """
     for i, c in enumerate(context, start=1):
-        text = c['text']
-        uri = c['metadata'][KNOWLEDGEBASE_SOURCE_URI_STRING]
-        prompt += "[{}]: {} (source: {})\n".format(i,text,uri)
+        text = c["text"]
+        uri = c["metadata"][KNOWLEDGEBASE_SOURCE_URI_STRING]
+        prompt += "[{}]: {} (source: {})\n".format(i, text, uri)
 
     prompt += """
     Please:

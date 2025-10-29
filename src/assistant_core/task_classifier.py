@@ -2,8 +2,10 @@ import json
 from llm_caller import call_llm
 
 
-def classify_task(query,history):
-    """ Detect intention of the user query. """
+def classify_task(query, history):
+    """
+    Classify task necessary to address user query.
+    """
 
     query = query.lower()
     prompt = f"""
@@ -22,8 +24,8 @@ def classify_task(query,history):
         New query: {query}
         Past queries:
     """
-    for (i,h) in enumerate(history):
-        prompt += f"\n {i}: {h["query_text"]}"
+    for i, h in enumerate(history):
+        prompt += f"\n {i}: {h['query_text']}"
 
     ans = call_llm(prompt)
     ans = json.loads(ans)
