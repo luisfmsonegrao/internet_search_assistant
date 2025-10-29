@@ -1,6 +1,6 @@
 import boto3
 import time
-from config import KNOWLEDGEBASE_ID, DATA_SOURCE_ID, AWS_REGION 
+from ..config import KNOWLEDGEBASE_ID, DATA_SOURCE_ID, AWS_REGION 
 
 kb_client = boto3.client('bedrock-agent')
 bedrock = boto3.client(service_name="bedrock-runtime", region_name=AWS_REGION)

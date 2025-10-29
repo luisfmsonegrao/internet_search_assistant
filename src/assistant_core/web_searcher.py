@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 from io import BytesIO
 from PyPDF2 import PdfReader
-from config import WEBSEARCH_ENDPOINT
+from ..config import WEBSEARCH_ENDPOINT
 
 USER_AGENT = "internet-search-assistant"
 

@@ -1,5 +1,5 @@
 import gradio as gr
-from assistant_api import check_assistant_state, call_assistant
+from ..assistant_api.assistant_api import check_assistant_state, call_assistant
 
 def chat_fn(user_message,history):
     """Route queries and replies"""
