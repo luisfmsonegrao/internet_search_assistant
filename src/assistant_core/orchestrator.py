@@ -7,7 +7,7 @@ from interaction_loader import load_interactions
 from doc_ingester import upload_to_knowledge_base
 from knowledgebase_retriever import retrieve_kb_context
 from state_saver import update_state
-from config import HISTORY_CONTEXT_SIZE, RELEVANCE_CONTEXT_SIZE, MAX_SEARCH_HITS
+from ..config import HISTORY_CONTEXT_SIZE, RELEVANCE_CONTEXT_SIZE, MAX_SEARCH_HITS
 
 
 def orchestrate(query,session_id):

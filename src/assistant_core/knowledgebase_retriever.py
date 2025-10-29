@@ -1,6 +1,6 @@
 import boto3
 from doc_ingester import KNOWLEDGE_BASE_ID
-from config import AWS_REGION
+from ..config import AWS_REGION
 
 bedrock_agent = boto3.client('bedrock-agent-runtime',region_name=AWS_REGION)
 

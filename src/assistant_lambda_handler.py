@@ -1,4 +1,4 @@
-from orchestrator import orchestrate
+from assistant_core.orchestrator import orchestrate
 import json
 
 def lambda_handler(event, context):
