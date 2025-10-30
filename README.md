@@ -16,7 +16,7 @@ The Web Search Assistant is an AI agent that answers user queries by retrieving 
   - `\src\assistant_core` contains the Search Assistant source code.
   - `\src\assistant_api` contains the Search Assitant API
   - `\src\assistant_ui` contains the Search Assistant GUI
-  - `\src` contains AWS Lambda handlers and authenticators
+  - `\src` contains AWS Lambda handlers, authenticators and configuration variables
   - `\notebooks` contains jupyter notebooks used for testing the assistant's functionalities.
   - `\resources` contains various resources such as figures or custom AWS Lambda Layers.
   - `\task4` contains the solution of task 4
