@@ -1,5 +1,5 @@
 from llm_caller import call_llm
-from ..config import KNOWLEDGEBASE_SOURCE_URI_STRING
+from src.config import KNOWLEDGEBASE_SOURCE_URI_STRING
 
 
 def answer_from_context(query, context):

@@ -20,7 +20,5 @@ run:
 	python src\assistant_core\gradio_ui.py
 
 clean:
-	find . -type d -name "__pycache__" -exec rm -r {} +
-	find . -type f -name "*.pyc" -delete
-
-install
+	Get-ChildItem -Path . -Recurse -Directory -Filter "__pycache__" | Remove-Item -Recurse -Force
+	Get-ChildItem -Recurse -Filter *.pyc | Remove-Item

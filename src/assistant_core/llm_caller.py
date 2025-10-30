@@ -1,6 +1,6 @@
 import boto3
 import json
-from ..config import AWS_REGION, BEDROCK_LLM_ID
+from src.config import AWS_REGION, BEDROCK_LLM_ID
 
 bedrock = boto3.client("bedrock-runtime", region_name=AWS_REGION)
 

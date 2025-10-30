@@ -3,8 +3,7 @@ import uuid
 import time
 import json
 from decimal import Decimal
-from ..config import TEXT_EMBEDDING_MODEL_ID
-from ..config import INTERACTION_DB_TTL
+from src.config import TEXT_EMBEDDING_MODEL_ID, INTERACTION_DB_TTL
 
 dynamodb = boto3.resource("dynamodb")
 interaction_cache = dynamodb.Table("internet-search-agent-cache")
