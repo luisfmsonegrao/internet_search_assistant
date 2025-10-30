@@ -1,6 +1,6 @@
 # Makefile (Windows only)
 
-.PHONY: setup format
+.PHONY: setup format run clean
 
 VENV = .venv
 
