@@ -19,9 +19,9 @@ The Web Search Assistant is an AI agent that answers user queries by retrieving 
   - `\src` contains AWS Lambda handlers, authenticators and configuration variables
   - `\notebooks` contains jupyter notebooks used for testing the assistant's functionalities.
   - `\resources` contains various resources such as figures or custom AWS Lambda Layers.
-  - `\task4` contains the solution of task 4
-  - `\task5` contains the solution of task 5
-  - `\task6` contains the solution of task 6
+  - `\task4` contains the solution of task 4 in the format of a jupyter notebook with code and explanatory markdown text.
+  - `\task5` contains the solution of task 5 in the format of a jupyter notebook with code and explanatory markdown text.
+  - `\task6` contains the solution of task 6 in the format of a jupyter notebook with code and explanatory markdown text.
 
 ## Search Assistant current architecture
 ![Internet Search Assistant schema](./resources/figures/internet-search-assistant.png)
