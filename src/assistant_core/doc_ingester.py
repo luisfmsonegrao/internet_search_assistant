@@ -13,7 +13,7 @@ def chunk_text(
     """
     Split text into chunks. Append prefix to try to disambiguate chunks from different documents.
     """
-    prefix = prefix + " Siemens annual report 2024"
+    prefix = prefix
     chunks = []
     start = 0
     prefix_size = len(prefix)
