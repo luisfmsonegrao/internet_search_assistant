@@ -87,7 +87,7 @@ Many architectural aspects of the Web Search Asistant are already defined (see [
       - explicit user feedback (thumbs up/down)
       - implicit user feedback (time spent reading answer, click-through rate, follow-up questions, clarifying questions, conversation drop-off, etc.)
       - Quantitative quality metrics, e.g. F1-score if a reference answer to the question exists
-      - LLM-as-judge scores
+      - LLM-as-judge answer quality scores
         
     - Updates should be deployed through canary releases to derisk deployment.  `AWS CodeDeploy` can be used for trafic splitting management during rollout, and `CloudWatch` metrics can be used to trigger rollbacks.
   - Security: the current solution - distributing an API key to users - is not practical nor safe once the number of users starts growing. Since this is meant to be an application for internal use by a limited number of users, identity and access management should be enforced using `AWS IAM authentication`.
