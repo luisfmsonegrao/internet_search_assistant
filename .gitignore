@@ -2,3 +2,4 @@
 __pycache__/
 test_web_searcher.ipynb
 .ruff_cache/
+*.csv
