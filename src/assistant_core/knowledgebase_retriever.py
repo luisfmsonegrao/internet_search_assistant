@@ -1,6 +1,5 @@
 import boto3
-from doc_ingester import KNOWLEDGE_BASE_ID
-from ..config import AWS_REGION
+from src.config import AWS_REGION, KNOWLEDGEBASE_ID
 
 bedrock_agent = boto3.client("bedrock-agent-runtime", region_name=AWS_REGION)
 
@@ -10,7 +9,7 @@ def retrieve_kb_context(query, top_k=5):
     Retrieve relevant context from Amazon Bedrock Knowledge database
     """
     response = bedrock_agent.retrieve(
-        knowledgeBaseId=KNOWLEDGE_BASE_ID,
+        knowledgeBaseId=KNOWLEDGEBASE_ID,
         retrievalQuery={"text": query},
         retrievalConfiguration={
             "vectorSearchConfiguration": {"numberOfResults": top_k}

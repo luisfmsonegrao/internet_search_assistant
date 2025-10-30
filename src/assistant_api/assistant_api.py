@@ -1,7 +1,7 @@
 import requests
-from ..config import AGENT_API_URL
-from ..config import STATE_API_URL
-from ..config import API_KEY
+from src.config import AGENT_API_URL
+from src.config import STATE_API_URL
+from src.config import API_KEY
 
 headers = {"api-key": API_KEY}
 session_id = "1234"  # session id should be created inside agent application, not here.

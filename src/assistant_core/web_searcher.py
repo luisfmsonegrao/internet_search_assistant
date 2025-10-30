@@ -2,14 +2,14 @@ import requests
 from bs4 import BeautifulSoup
 from io import BytesIO
 from PyPDF2 import PdfReader
-from ..config import WEBSEARCH_ENDPOINT
+from src.config import WEBSEARCH_ENDPOINT
 
 USER_AGENT = "internet-search-assistant"
 
 
 def search_web(query, max_results):
     """
-    Query DuckDuckGo HTML endpoint and return a list of search results.
+    Query web search endpoint and return a list of search results.
     """
     headers = {"User-Agent": USER_AGENT}
     resp = requests.post(
@@ -31,7 +31,7 @@ def search_web(query, max_results):
         )
         snippet = snippet_el.get_text(" ", strip=True) if snippet_el else ""
         if title and url:
-            url = "https://ourbrand.asml.com/m/79d325b168e0fd7e/original/2024-Annual-Report-based-on-US-GAAP.pdf"  # just to avoid unreliability of search results for now
+            url = "https://assets.new.siemens.com/siemens/assets/api/uuid:ae46683e-14dd-4455-a882-09d4184457c7/Annual-Financial-Report-FY2024.pdf"  # just to avoid unreliability of search results for now
             if url.lower().endswith(".pdf"):
                 title = url.split("/")[-1]
 
@@ -100,6 +100,7 @@ def extract_text_from_pdf(url):  # PyPDF2 sometimes scrambles pdf content such a
         text = " ".join(page.extract_text() or "" for page in reader.pages)
         return " ".join(text.split())
     except Exception as e:
+        print(e)
         return f"[Error parsing PDF: {e}]"  # ToDo: Add proper error handling
 
 

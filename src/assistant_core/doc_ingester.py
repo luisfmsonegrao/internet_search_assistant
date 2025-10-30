@@ -1,6 +1,6 @@
 import boto3
 import time
-from ..config import KNOWLEDGEBASE_ID, DATA_SOURCE_ID, AWS_REGION
+from src.config import KNOWLEDGEBASE_ID, DATA_SOURCE_ID, AWS_REGION
 
 kb_client = boto3.client("bedrock-agent")
 bedrock = boto3.client(service_name="bedrock-runtime", region_name=AWS_REGION)
@@ -13,6 +13,7 @@ def chunk_text(
     """
     Split text into chunks. Append prefix to try to disambiguate chunks from different documents.
     """
+    prefix = prefix + " Siemens annual report 2024"
     chunks = []
     start = 0
     prefix_size = len(prefix)
@@ -24,7 +25,7 @@ def chunk_text(
     return chunks
 
 
-def upload_to_knowledge_base(document):
+def upload_to_knowledge_base(document): # Currently the assistant chunks web text and uploads to 
     """
     Store embedded chunks in a Bedrock Knowledge Base.
     """

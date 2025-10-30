@@ -1,6 +1,6 @@
 import boto3
 import time
-from ..config import STATE_DB_TTL
+from src.config import STATE_DB_TTL
 
 dynamodb = boto3.resource("dynamodb")
 state_table = dynamodb.Table("internet-search-agent-state")
