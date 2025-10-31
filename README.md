@@ -27,7 +27,6 @@ The Web Search Assistant is an AI agent that answers user queries by retrieving 
   - `\task6` contains the solution of task 6 in the format of a jupyter notebook with code and explanatory markdown text.
 
 ## Search Assistant current architecture
-![Internet Search Assistant schema](./resources/figures/internet-search-assistant.png)
 
 ## Search Assistant detailed description
 
