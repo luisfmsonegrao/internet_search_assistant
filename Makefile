@@ -22,4 +22,5 @@ run:
 clean:
 	Get-ChildItem -Path . -Recurse -Directory -Filter "__pycache__" | Remove-Item -Recurse -Force
 	Get-ChildItem -Path . -Recurse -Directory -Filter ".ruff_cache" | Remove-Item -Recurse -Force
+	Get-ChildItem -Path . -Recurse -Directory -Filter ".gradio" | Remove-Item -Recurse -Force
 	Get-ChildItem -Recurse -Filter *.pyc | Remove-Item
