@@ -102,15 +102,15 @@ Once there features are implemented, the architecture of the Web Search Assistan
 
 ## Task 4
 
-The solution to task 4 is implemented as a jupyter notebook in folder `task4`. The notebook also contains extensive markdown text explaing each decision and the overall solution.
+The solution to task 4 is implemented as a jupyter notebook in folder `task4`. The notebook also contains extensive markdown text explaining each decision and the overall solution.
 
 ## Task 5
 
-The solution to task 5 is implemented as a jupyter notebook in folder `task5`. The notebook also contains extensive markdown text explaing each decision and the overall solution.
+The solution to task 5 is implemented as a jupyter notebook in folder `task5`. The notebook also contains extensive markdown text explaining each decision and the overall solution.
 
 ## Task 6
 
-The solution to task 6 is implemented as a jupyter notebook in folder `task6`. The notebook also contains extensive markdown text explaing each decision and the overall solution.
+The solution to task 6 is implemented as a jupyter notebook in folder `task6`. The notebook also contains extensive markdown text explaining each decision and the overall solution.
 
 
 
