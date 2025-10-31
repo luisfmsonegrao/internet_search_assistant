@@ -52,9 +52,9 @@ The Search Assistant is an AI agent that answers user queries by retrieving rele
   
   **Note**: In every step, the assistant logs its current state to a database that can be queried by the user to check the assistant's current state.
 
-  The assistant high-level flow is implemented in `src\orchestrator.py`.
-  The assistant API is implemented in `src\assistant_api.py`.
-  The GUI to interact with the assitant is implemented in `gradio_ui.py`.
+  The assistant high-level flow is implemented in `src\assistant_core\orchestrator.py`.
+  The assistant API is implemented in `src\assistant_api\assistant_api.py`.
+  The GUI to interact with the assitant is implemented in `src\assistant_ui\gradio_ui.py`.
    
 ## Tech Stack
 
@@ -70,11 +70,11 @@ The Search Assistant is an AI agent that answers user queries by retrieving rele
 
 ## Search Assistant API
 
-The Search Assistant API is composed of two functions, defined in `src\assistant_api.py`:
+The Search Assistant API is composed of two functions, defined in `src\assistant_api\assistant_api.py`:
 - `call_assistant` queries the assistant
 - `check_assistant_state` retrieves the current state of the assistant
 
-A GUI is implemented in `src\gradio_ui.py` to facilitate user interaction with the assistant. It can be launched by executing the script from the command line (`python <path_to_script>\gradio_ui.py`).
+A GUI is implemented in `src\assistant_ui\gradio_ui.py` to facilitate user interaction with the assistant. It can be launched by executing the script from the command line (`python <path_to_script>\gradio_ui.py`).
 
 **Note**: The only necessary step prior to interacting with the assistant is obtaining the secret API Key and storting it as a local environment variable called "ISA_API_KEY".
 
