@@ -28,6 +28,9 @@ The Web Search Assistant is an AI agent that answers user queries by retrieving 
 
 ## Search Assistant current architecture
 
+![Internet Search Assistant schema](./resources/figures/internet-search-assistant.png)
+
+
 ## Search Assistant detailed description
 
 The Search Assistant is an AI agent that answers user queries by retrieving relevant information from the web.
