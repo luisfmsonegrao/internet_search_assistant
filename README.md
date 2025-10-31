@@ -34,7 +34,8 @@ The Web Search Assistant is an AI agent that answers user queries by retrieving 
 ## Search Assistant detailed description
 
 The Search Assistant is an AI agent that answers user queries by retrieving relevant information from the web.
-  - Upon receiving a new user query, the assistant loads most-recent K user interactions from a database;
+  - an AWS Lambda authorizer authenticates a new user query by comparing a user-provided api key with a secret key stored in AWS Secrets manager;
+  - Upon receiving a new authenticated user query, the assistant loads most-recent K user interactions from a database;
   - Based on the query and the past interactions, the assistant uses an LLM to decide whether web search, knowledge base search or no search are required to answer the query.
   - If web search is needed:
     - the LLM converts the query to a web query
