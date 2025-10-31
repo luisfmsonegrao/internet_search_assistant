@@ -103,7 +103,7 @@ def wait_for_completion(batch):  # check if it's possible that this can get stuc
 
 def format_uris(uris):
     """
-    Formta URIs to get documents from bedrock knowlegde base
+    Format URIs to get documents from bedrock knowlegde base
     """
     doc_ids = [{"dataSourceType": "CUSTOM", "custom": {"id": r}} for r in uris]
     return doc_ids

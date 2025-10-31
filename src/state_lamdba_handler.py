@@ -6,6 +6,9 @@ state_table = dynamodb.Table("internet-search-agent-state")
 
 
 def lambda_handler(event, context):
+    """
+    AWS LAmbda endpoint to check current state of assistant
+    """
     body = json.loads(event["body"])
     session_id = body.get("session_id")
 
@@ -25,6 +28,6 @@ def lambda_handler(event, context):
     response = {
         "statusCode": 200,
         "headers": {"Content-Type": "application/json"},
-        "body": json.dumps(body),
+        "body": json.dumps(body,default=str),
     }
     return response

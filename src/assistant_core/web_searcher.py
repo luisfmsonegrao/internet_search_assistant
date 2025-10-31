@@ -9,7 +9,7 @@ USER_AGENT = "internet-search-assistant"
 
 def search_web(query, max_results):
     """
-    Query web search endpoint and return a list of search results.
+    Query web search endpoint and return text contents of a list of search results.
     """
     headers = {"User-Agent": USER_AGENT}
     resp = requests.post(
@@ -31,7 +31,7 @@ def search_web(query, max_results):
         )
         snippet = snippet_el.get_text(" ", strip=True) if snippet_el else ""
         if title and url:
-            url = "https://assets.new.siemens.com/siemens/assets/api/uuid:ae46683e-14dd-4455-a882-09d4184457c7/Annual-Financial-Report-FY2024.pdf"  # just to avoid unreliability of search results for now
+            url = "https://assets.new.siemens.com/siemens/assets/api/uuid:ae46683e-14dd-4455-a882-09d4184457c7/Annual-Financial-Report-FY2024.pdf"  # Hardcoded URL to avoid unreliability of search results for now
             if url.lower().endswith(".pdf"):
                 title = url.split("/")[-1]
 
