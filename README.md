@@ -10,6 +10,9 @@ The Web Search Assistant is an AI agent that answers user queries by retrieving 
   - [Tech-stack](#Tech-stack)
   - [Search Assistant API](#Search-Assistant-API)
   - [Deployment Strategy](#Deployment-Strategy)
+  - [Task 4](#Task-4)
+  - [Task 5](#Task-5)
+  - [Task 6](#Task-6)
 
 ## Repository contents
 
@@ -95,6 +98,21 @@ Many architectural aspects of the Web Search Asistant are already defined (see [
 Once there features are implemented, the architecture of the Web Search Assistant will look more like this:
 
 ![Internet Search Assistant deployment architecture schema](./resources/figures/internet-search-assistant-future.png)
+
+
+## Task 4
+
+The solution to task 4 is implemented as a jupyter notebook in folder `task4`. The notebook also contains extensive markdown text explaing each decision and the overall solution.
+
+## Task 5
+
+The solution to task 5 is implemented as a jupyter notebook in folder `task5`. The notebook also contains extensive markdown text explaing each decision and the overall solution.
+
+## Task 6
+
+The solution to task 6 is implemented as a jupyter notebook in folder `task6`. The notebook also contains extensive markdown text explaing each decision and the overall solution.
+
+
 
 
 
